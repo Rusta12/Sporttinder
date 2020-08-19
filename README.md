@@ -10,8 +10,8 @@ ____
 ## Актуальные Задачи
 ___
 - [X] Написать базу данных в PostgreSQL
-- [X] Реализация основных таблиц - [Create01](https://github.com/Rusta12/Sporttinder/blob/master/create_1-1.sql)
-- [ ] Реализация множественных таблиц -  [Multi_table01](https://github.com/Rusta12/Sporttinder/blob/master/multi_table1.sql)
+- [X] Реализация основных таблиц - [последняя версия](https://github.com/Rusta12/Sporttinder/blob/master/create_1-1.sql)
+- [ ] Реализация множественных таблиц -  [последняя версия](https://github.com/Rusta12/Sporttinder/blob/master/multi_table1.sql)
      - [ ] добавить множественность для лайков предусмотреть в основных таблицах количественный тип данных (cont)
           - мероприятия;
           - медия (фото, документ, видео);
@@ -23,7 +23,8 @@ ___
           - медия сообщества
           - медиа мероприятий
      - [ ] добавить количество пользоватей записавшых на мероприятие
-      
+- [ ] загрузить тестовые данные - [последняя версия](https://github.com/Rusta12/Sporttinder/blob/master/INSERT_1.sql)
+- [ ] создать востребованные представления с join запросами
       
      
         
