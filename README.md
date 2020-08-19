@@ -4,7 +4,8 @@ ____
 
 ## Шаг - 1. База данных Sporttinder
 
-![Схема БД](https://github.com/Rusta12/Sporttinder/blob/master/1-1.png)
+[![Схема БД](https://github.com/Rusta12/Sporttinder/blob/master/1-1.png)]
 
-- [ ] Написать таблицы
-    - [ ] 
+- [ ] Представление таблиц в PostgreSQL
+    - [ ] Написать таблицы;
+    
