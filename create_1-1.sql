@@ -88,7 +88,7 @@ FOREIGN KEY (sport_name) REFERENCES sport(id)
 DROP TABLE IF EXISTS media_types CASCADE;
 CREATE TABLE media_types(
 	id SERIAL PRIMARY KEY,
-    name_types VARCHAR(255), 
+    	name_types VARCHAR(255), 
 	archiv_types BOOL not null default false
 );
 
@@ -97,12 +97,12 @@ CREATE TABLE media_types(
 DROP TABLE IF EXISTS media CASCADE;
 CREATE TABLE media(
 	id SERIAL PRIMARY KEY,
-    type_id BIGINT NOT NULL,
+    	type_id BIGINT NOT NULL,
   	filename VARCHAR(255),
-    body text,
+    	body text,
 	metadata JSON,
-    created_at timestamp DEFAULT CURRENT_TIMESTAMP,
-    updated_at timestamp DEFAULT now(),
+    	created_at timestamp DEFAULT CURRENT_TIMESTAMP,
+    	updated_at timestamp DEFAULT now(),
 FOREIGN KEY (type_id) REFERENCES media_types(id)
 );
 -- UPDATE media SET body = 'меняем текст', updated_at = DEFAULT WHERE id = 1; -- время и дата обнавляются!
@@ -111,19 +111,19 @@ FOREIGN KEY (type_id) REFERENCES media_types(id)
 -- 7. Регионы РФ (только Москва и область)
 DROP TABLE IF EXISTS geo_regions CASCADE;
 CREATE TABLE geo_regions (
-  id SERIAL PRIMARY KEY,
-  district_id smallint not null default 0,
-  name_regions varchar(255) NOT NULL,
-  archiv_region BOOL not null default false
+ 	 id SERIAL PRIMARY KEY,
+  	 district_id smallint not null default 0,
+ 	 name_regions varchar(255) NOT NULL,
+  	 archiv_region BOOL not null default false
  );
 
 -- 8. Города
 DROP TABLE IF EXISTS geo_city CASCADE;
 CREATE TABLE geo_city (
-  id SERIAL PRIMARY KEY,
-  region_id smallint NOT NULL DEFAULT '0',
-  name_city varchar(255) NOT NULL,
-  archiv_city BOOL not null default false,
+  	id SERIAL PRIMARY KEY,
+  	region_id smallint NOT NULL DEFAULT '0',
+  	name_city varchar(255) NOT NULL,
+  	archiv_city BOOL not null default false,
 FOREIGN KEY (region_id) REFERENCES geo_regions(id)
 );
 
@@ -194,7 +194,7 @@ CREATE TABLE facillity (
 	district_id INTEGER, -- справочник от округов
 	areadis_id INTEGER, -- справочник от районов
 	created_at timestamp DEFAULT CURRENT_TIMESTAMP,
-    updated_at timestamp DEFAULT now(),
+    	updated_at timestamp DEFAULT now(),
 	archiv_facillity BOOL not null default false,
 FOREIGN KEY (type_id) REFERENCES facillity_type(id),
 FOREIGN KEY (media_id) REFERENCES media(id),
@@ -217,7 +217,7 @@ CREATE TABLE object_area (
 	media_id BIGINT,
 	coordinate_id BIGINT NOT NULL,
 	created_at timestamp DEFAULT CURRENT_TIMESTAMP,
-    updated_at timestamp DEFAULT now(),
+   	updated_at timestamp DEFAULT now(),
 	archiv_object_area BOOL not null default false,
 FOREIGN KEY (type_id) REFERENCES object_area_type(id),
 FOREIGN KEY (media_id) REFERENCES media(id),
@@ -229,10 +229,10 @@ FOREIGN KEY (coordinate_id) REFERENCES coordinat(id)
 DROP TABLE IF EXISTS users CASCADE;
 CREATE TABLE users (
 	id SERIAL PRIMARY KEY, 
-    nickname VARCHAR(50),
+    	nickname VARCHAR(50),
 	firstname VARCHAR(50),
-    lastname VARCHAR(50),
-    email VARCHAR(120) UNIQUE,
+    	lastname VARCHAR(50),
+    	email VARCHAR(120) UNIQUE,
  	password_hash VARCHAR(100), -- 123456 => vzx;clvgkajrpo9udfxvsldkrn24l5456345t
 	phone BIGINT UNIQUE,
 	archiv_users BOOL not null default false
@@ -244,15 +244,15 @@ CREATE TABLE users (
 DROP TABLE IF EXISTS profiles_users;
 CREATE TABLE profiles_users (
 	user_id SERIAL NOT NULL UNIQUE, 
-    gender CHAR(1), -- м или ж
-    birthday DATE,
+    	gender CHAR(1), -- м или ж
+    	birthday DATE,
 	photo_id BIGINT,
-    created_at timestamp DEFAULT CURRENT_TIMESTAMP,
-    updated_at timestamp DEFAULT now(),
+    	created_at timestamp DEFAULT CURRENT_TIMESTAMP,
+    	updated_at timestamp DEFAULT now(),
 	geo_regions_id BIGINT,
 	geo_city_id BIGINT,
-    district_id BIGINT, -- округ проживания
-    areadis_id BIGINT, -- район проживания
+    	district_id BIGINT, -- округ проживания
+    	areadis_id BIGINT, -- район проживания
 FOREIGN KEY (user_id) REFERENCES users(id),     
 FOREIGN KEY (district_id) REFERENCES district(id), 
 FOREIGN KEY (areadis_id) REFERENCES areadis(id)
@@ -274,10 +274,10 @@ DROP TABLE IF EXISTS messages;
 CREATE TABLE messages (
 	id SERIAL PRIMARY KEY,
 	from_user_id BIGINT NOT NULL,
-    to_user_id BIGINT NOT NULL,
-    body TEXT,
-    created_at timestamp DEFAULT CURRENT_TIMESTAMP,
-    updated_at timestamp DEFAULT now(),
+    	to_user_id BIGINT NOT NULL,
+   	body TEXT,
+   	created_at timestamp DEFAULT CURRENT_TIMESTAMP,
+   	updated_at timestamp DEFAULT now(),
 FOREIGN KEY (from_user_id) REFERENCES users(id),
 FOREIGN KEY (to_user_id) REFERENCES users(id)
 );
@@ -289,10 +289,10 @@ CREATE TYPE mood AS ENUM ('requested', 'approved', 'unfriended', 'declined');
 
 CREATE TABLE friend_requests (
 	initiator_user_id BIGINT NOT NULL,
-    target_user_id BIGINT NOT NULL,
-    status mood,
+    	target_user_id BIGINT NOT NULL,
+    	status mood,
    	created_at timestamp DEFAULT CURRENT_TIMESTAMP,
-    updated_at timestamp DEFAULT now(),
+    	updated_at timestamp DEFAULT now(),
 PRIMARY KEY (initiator_user_id, target_user_id),
 FOREIGN KEY (initiator_user_id) REFERENCES users(id),
 FOREIGN KEY (target_user_id) REFERENCES users(id),
@@ -312,9 +312,9 @@ FOREIGN KEY (admin_user_id) REFERENCES users(id)
 DROP TABLE IF EXISTS likes CASCADE;
 CREATE TABLE likes(
 	id SERIAL PRIMARY KEY,
-    user_id BIGINT NOT NULL,
-    media_id BIGINT NOT NULL,
-    created_at timestamp DEFAULT CURRENT_TIMESTAMP,
+    	user_id BIGINT NOT NULL,
+    	media_id BIGINT NOT NULL,
+    	created_at timestamp DEFAULT CURRENT_TIMESTAMP,
 FOREIGN KEY (user_id) REFERENCES users(id),
 FOREIGN KEY (media_id) REFERENCES media(id)
 );
@@ -337,7 +337,7 @@ CREATE TABLE competition (
 	geo_regions_id BIGINT NOT NULL,
 	geo_city_id BIGINT NOT NULL,
 	created_at timestamp DEFAULT CURRENT_TIMESTAMP,
-    updated_at timestamp DEFAULT now(),
+    	updated_at timestamp DEFAULT now(),
 	archiv_competition BOOL not null default false,
 	archiv_comment VARCHAR (25),
 FOREIGN KEY (competition_rank_id) REFERENCES competition_rank(id),
