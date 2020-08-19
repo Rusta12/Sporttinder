@@ -10,7 +10,7 @@ ____
 ## Задачи
 ___
 - [ ] Написать базу данных в PostgreSQL
-    - :white_check_mark: Реализация основных таблиц - [Create01](https://github.com/Rusta12/Sporttinder/blob/master/create_1-1.sql)
-    - :white_check_mark: Реализация множественных таблиц -  [Multi_table01](https://github.com/Rusta12/Sporttinder/blob/master/multi_table1.sql)
+- :white_check_mark: Реализация основных таблиц - [Create01](https://github.com/Rusta12/Sporttinder/blob/master/create_1-1.sql)
+- :white_check_mark: Реализация множественных таблиц -  [Multi_table01](https://github.com/Rusta12/Sporttinder/blob/master/multi_table1.sql)
      - [ ] Таблица лайков
         
